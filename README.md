@@ -5,10 +5,10 @@ Whilst writing Audioboo, the company I was writing it for went bust when the pro
 
 The **Controls** and **Views** directory are where the layouts are found
 
-<img style="width: 240px;margin:20px" src="https://storagezengocdn.blob.core.windows.net/github/audioboo 1.png">
-<img style="width: 240px;margin:20px"  src="https://storagezengocdn.blob.core.windows.net/github/audioboo 2.png" width="200">
+<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 1.png" width="200">
+<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 2.png" width="200">
 
-<img style="width: 240px;margin:20px"  src="https://storagezengocdn.blob.core.windows.net/github/audioboo 3.png" width="200">
-<img style="width: 240px;margin:20px"  src="https://storagezengocdn.blob.core.windows.net/github/audioboo 4.png" width="200">
+<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 3.png" width="200">
+<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 4.png" width="200">
 
-<img style="width: 240px;margin:20px"  src="https://storagezengocdn.blob.core.windows.net/github/audioboo 5.png" width="200">
+<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 5.png" width="200">
