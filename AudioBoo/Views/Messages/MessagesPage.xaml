@@ -1,0 +1,59 @@
+﻿<local:PhoneApplicationBasePage
+    xmlns:local="clr-namespace:AudioBoo.Helpers"
+    x:Class="AudioBoo.Views.MessagesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels;assembly=AudioBoo"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls;assembly=AudioBoo"
+    xmlns:listcontrols="clr-namespace:AudioBoo.Controls.ListItems;assembly=AudioBoo"
+    shell:SystemTray.IsVisible="True">
+    
+    
+    <local:PhoneApplicationBasePage.Resources>
+
+        <vm:MessagesViewModel x:Key="MessagesViewModel"/>
+
+    </local:PhoneApplicationBasePage.Resources>
+
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/Images/background.png"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+
+        <!--The header control-->
+        <customcontrols:PageSingleHeaderControl Name="PageHeaderControl" Grid.Row="0" />
+
+        <!--The search box-->
+        <!--<customcontrols:SearchBoxControl x:Name="SearchBox" Grid.Row="1" Height="Auto" />-->
+
+        <!--the list of messages-->
+        <Grid x:Name="ContentPanel" Margin="12,0,12,0" Grid.Row="2">
+
+            <customcontrols:LongListMessagesControl x:Name="MessagesOnPage" />
+
+        </Grid>
+
+        <!--the feedback at the bottom-->
+        <!--<customcontrols:SearchBoxFeedbackControl x:Name="SearchBoxFeedback" Grid.Row="3" Height="Auto" />-->
+
+    </Grid>
+
+</local:PhoneApplicationBasePage>

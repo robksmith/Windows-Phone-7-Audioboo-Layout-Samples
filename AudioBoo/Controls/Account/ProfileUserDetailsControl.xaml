@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="AudioBoo.Controls.ProfileUserDetailsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Canvas x:Name="GridUserDetails" Background="Transparent" Height="80" >
+
+        <!--<Image Name="ImageUser" Source="{Binding Path=CurrentUser.ProfileImageUri, Mode=OneWay}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Height="80" Canvas.Left="12"/>-->
+
+        <TextBlock Name="TextblockUsername" Text="{Binding Path=CurrentUser.Username, Mode=OneWay}" FontSize="30" HorizontalAlignment="Center" Foreground="{StaticResource AudioBooPink}" TextAlignment="Center" Width="480" Height="40"/>
+
+        <TextBlock Name="TextblockUserId" Text="{Binding Path=CurrentUser.UserId, Mode=OneWay}" HorizontalAlignment="Center" Foreground="{StaticResource StandardTextColour}" Canvas.Top="40" TextAlignment="Center" Width="480" Height="40"/>
+
+    </Canvas>
+
+</UserControl>

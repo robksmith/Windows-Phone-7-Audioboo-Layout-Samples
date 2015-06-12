@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="AudioBoo.Controls.LongListCategoriesControl"
+    xmlns:listcontrols="clr-namespace:AudioBoo.Controls.ListItems;assembly=AudioBoo"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+
+        <!-- The template for each club -->
+        <DataTemplate x:Key="categoriesItemTemplate" >
+
+            <listcontrols:CategoryItemControl x:Name="CategoryItemControl" Background="Blue" />
+
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+
+    <Grid x:Name="LayoutRoot" >
+
+        <!--The itemtemplate property is set in code dynamically-->
+        <toolkit:LongListSelector x:Name="countriesLongList"
+                                          GroupItemTemplate="{StaticResource categoriesItemTemplate}"                                  
+                                          Background="Transparent"
+                                           >
+
+            <toolkit:LongListSelector.GroupItemsPanel>
+                <ItemsPanelTemplate>
+                    <toolkit:WrapPanel/>
+                </ItemsPanelTemplate>
+            </toolkit:LongListSelector.GroupItemsPanel>
+
+        </toolkit:LongListSelector>
+
+    </Grid>
+    
+</UserControl>

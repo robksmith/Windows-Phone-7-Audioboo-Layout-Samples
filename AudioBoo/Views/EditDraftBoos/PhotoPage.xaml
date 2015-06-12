@@ -1,0 +1,61 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="AudioBoo.Views.EditDraftBoos.PhotoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="AudioBoo" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource AudioBooPink}"/>
+            <TextBlock Text="Photo Boo" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="{StaticResource AudioBooPink}"/>
+        </StackPanel>
+
+        <!--Boo title-->
+        <Canvas Width="480" Grid.Row="1">
+          
+            <!--Boo title-->
+            <TextBlock Name="TextboxBooTitle" FontSize="20" Text="{Binding Title}" Foreground="{StaticResource AudioBooPink}" Canvas.Left="30" Canvas.Top="10" FontWeight="Bold" Width="440"/>
+
+            <!--The photo control-->
+			<customcontrols:PhotoControl x:Name="PhotoControl" Canvas.Left="83" Canvas.Top="77" />
+            
+            <!--The tap instructions-->
+	        <TextBlock x:Name="TextboxInstructionsTap" TextWrapping="Wrap" FontSize="20" Text="Tap box above to take a photo" Foreground="{StaticResource AudioBooPink}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" TextAlignment="Center" Canvas.Left="83" Canvas.Top="377" />
+
+			  <TextBlock Name="TextboxInstructionsOr" TextWrapping="Wrap" FontSize="15" Text="or" Foreground="{StaticResource AudioBooPink}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Canvas.Top="413" Canvas.Left="83" TextAlignment="Center" />
+
+			<HyperlinkButton Name="HyperlinkSlectFromFolder" Content="Select picture from library" Foreground="{StaticResource AudioBooPink}" Canvas.Left="83" Canvas.Top="439" Width="300" Click="HyperlinkSlectFromFolder_Click"/>
+			        
+		</Canvas>
+
+    </Grid>
+
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <!--<shell:ApplicationBarIconButton IconUri="/Resources/Images/AppBar/camera.png" Text="take" Click="ButtonTakePhoto_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Resources//Images/AppBar/choosephoto.png" Text="choose" Click="ButtonChoosePhoto_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Resources//Images/AppBar/rotatephoto.png" Text="rotate" Click="ButtonRotatePhoto_Click"/>-->
+            <shell:ApplicationBarIconButton IconUri="/Resources/Images/AppBar/delete.png" Text="remove" Click="ButtonClearPhoto_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

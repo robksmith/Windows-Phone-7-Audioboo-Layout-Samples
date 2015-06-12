@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="AudioBoo.Controls.DraftBooMediaRecorderControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:converters="clr-namespace:AudioBoo.Helpers"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="280" d:DesignWidth="480">
+
+
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="trueToVisibleConverter"  />
+    </UserControl.Resources>
+    
+    <Grid x:Name="RecordGrid" Row="2" VerticalAlignment="Top" Visibility="Visible">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <!--The static text (time remaining)-->
+        <TextBlock Name="TextBlockTimeRemainingDescription" 
+                   Grid.Row="0" 
+                   Text="{Binding AppStrings.TimeRemaining, Source={StaticResource LocalizedStrings}}" 
+                   Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToVisible}" 
+                   HorizontalAlignment="Center" 
+                   Foreground="{StaticResource AudioBooGrey}"/>
+
+        <!--The actual time remaining-->
+        <TextBlock Name="TextBlockTimeRemaining" Grid.Row="1" 
+                   Text="{Binding TimeString}" 
+                   HorizontalAlignment="Center" 
+                   Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToVisible}" 
+                   FontSize="30" 
+                   Foreground="{StaticResource AudioBooGrey}"/>
+
+        <Button Name="ButtonPauseRecording" 
+                            Grid.Row="2" 
+                            Content="{Binding AppStrings.PauseButton, Source={StaticResource LocalizedStrings}}" 
+                            HorizontalAlignment="Center" 
+                            Margin="89,28,91,0" 
+                            VerticalAlignment="Top" 
+                            BorderBrush="{StaticResource AudioBooPink}" 
+                            Width="300" 
+                            Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToVisible}" 
+                            Click="PauseRecordingButton_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB0006E" Offset="1"/>
+                    <GradientStop Color="#FFFFBFE7"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <Button Name="ButtonRecord" 
+                            Grid.Row="2" 
+                            Content="{Binding AppStrings.RecordButton, Source={StaticResource LocalizedStrings}}" 
+                            HorizontalAlignment="Center" 
+                            Margin="89,28,91,0" 
+                            VerticalAlignment="Top" 
+                            BorderBrush="{StaticResource AudioBooPink}" 
+                            Width="300" 
+                            Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToInvisible}" 
+                            Click="RecordButton_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFB0006E" Offset="1"/>
+                    <GradientStop Color="#FFFFBFE7"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</UserControl>

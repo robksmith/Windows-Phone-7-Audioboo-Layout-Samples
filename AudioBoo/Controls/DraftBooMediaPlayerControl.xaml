@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="AudioBoo.Controls.DraftBooMediaPlayerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels"
+    xmlns:converters="clr-namespace:AudioBoo.Helpers"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}" d:DesignWidth="480" Height="130">
+    
+	<UserControl.Resources>
+        
+        <vm:MediaPlayerViewModel x:Key="ViewModel"/>
+
+        <converters:BoolToVisibilityConverter x:Key="trueToVisibleConverter"  />
+		
+	</UserControl.Resources>
+
+    <Canvas x:Name="MediaPlaybackGrid" Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToInvisible}">
+
+        <!--The play position indicator-->
+        <Slider x:Name="PlayPositionIndicator" Minimum="0" Background="#FF317597" Foreground="{StaticResource AudioBooPink}" Width="345" Canvas.Left="115" Canvas.Top="12" Height="89" BorderThickness="0" />
+
+        <!--The current play time marker eg 00:07 / 00:12-->
+        <TextBlock x:Name="PlayTimeMarker" Text="play time marker" Foreground="{StaticResource AudioBooPink}" Canvas.Left="115" Canvas.Top="64" TextAlignment="Right" Width="334"/>
+        
+        <!--The play button-->
+        <Button 
+                x:Name="PlayButton" 
+                Height="75" Width="75" 
+                Visibility="{Binding IsPlaying, ConverterParameter=TrueToInvisible, Converter={StaticResource trueToVisibleConverter}}" 
+                Click="PlayButtonClick" Canvas.Left="26" Canvas.Top="26">
+					<Button.Template>
+						<ControlTemplate>
+							<Image Source="/Resources/Images/icn_play.png"/>
+						</ControlTemplate>
+					</Button.Template>
+        </Button>
+
+        <!--The pause button-->
+        <Button 
+                x:Name="PauseButton" 
+                Height="75" Width="75" 
+                Visibility="{Binding IsPlaying, ConverterParameter=TrueToVisible, Converter={StaticResource trueToVisibleConverter}}" 
+                Click="PauseButtonClick" Canvas.Left="26" Canvas.Top="26">
+					<Button.Template>
+						<ControlTemplate>
+							<Image Source="/Resources/Images/icn_pause.png"/>
+						</ControlTemplate>
+					</Button.Template>
+        </Button>
+
+    </Canvas>
+
+
+</UserControl>

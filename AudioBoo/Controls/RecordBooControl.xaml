@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="AudioBoo.Controls.RecordBooControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:AudioBoo.Controls" xmlns:converters="clr-namespace:AudioBoo.Helpers"
+             mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480" Width="400">
+
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="trueToVisibleConverter"  />
+        <ControlTemplate x:Key="PhoneProgressBarSliderThumb" TargetType="Thumb">
+            <Rectangle Fill="{TemplateBinding Foreground}" Height="4" IsHitTestVisible="False" Width="4"/>
+        </ControlTemplate>
+        
+    </UserControl.Resources>
+    
+    
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="280"></RowDefinition>
+            <RowDefinition Height="86"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:WaveControl x:Name="WaveControl" HorizontalAlignment="Center" Grid.Row="0"/>
+
+        <Grid x:Name="MediaPlaybackGrid" Row="1" Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToInvisible}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ProgressBar Grid.Row="0" x:Name="PositionIndicator" Value="{Binding Progress}" Background="#FF317597" Foreground="{StaticResource AudioBooPink}" Margin="79,26,0,31" Style="{StaticResource ProgressBarStyle1}" />
+            <TextBlock x:Name="TimeMarker" Text="{Binding TimeString}" Margin="285,59,0,0" Foreground="{StaticResource AudioBooPink}"/>
+            <Button Grid.Row="0" x:Name="PlayButton" Height="47" Width="47" Margin="27,14,326,19" Visibility="{Binding IsPlaying, ConverterParameter=TrueToInvisible, Converter={StaticResource trueToVisibleConverter}}" Click="PlayButtonClick">
+            	<Button.Template>
+            		<ControlTemplate>
+            			<Image Source="/Resources/Images/icn_play.png"/>
+            		</ControlTemplate>
+            	</Button.Template>
+            </Button>
+            <Button Grid.Row="0" x:Name="PauseButton" Height="47" Width="47" Margin="27,14,326,19" Visibility="{Binding IsPlaying, ConverterParameter=TrueToVisible, Converter={StaticResource trueToVisibleConverter}}" Click="PauseButtonClick">
+            	<Button.Template>
+            		<ControlTemplate>
+            			<Image Source="/Resources/Images/icn_pause.png"/>
+            		</ControlTemplate>
+            	</Button.Template>
+            </Button>
+        </Grid>
+        
+        <Grid x:Name="RecordGrid" Row="1" VerticalAlignment="Center" Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToVisible}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.Row="0" Text="{Binding AppStrings.TimeRemaining, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" Foreground="{StaticResource AudioBooGrey}"/>
+            <TextBlock Grid.Row="1" Text="{Binding TimeString}" HorizontalAlignment="Center" FontSize="30" Foreground="{StaticResource AudioBooGrey}"/>
+        </Grid>
+        <Button Content="{Binding AppStrings.PauseButton, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" BorderBrush="{StaticResource AudioBooPink}" Width="300" Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToVisible}" Click="PauseRecordingButton_Click">
+        	<Button.Background>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="#FFB0006E" Offset="1"/>
+        			<GradientStop Color="#FFFFBFE7"/>
+        		</LinearGradientBrush>
+        	</Button.Background>
+        </Button>
+        <Button Content="{Binding AppStrings.RecordButton, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" BorderBrush="{StaticResource AudioBooPink}" Width="300" Visibility="{Binding IsRecording, Converter={StaticResource trueToVisibleConverter}, ConverterParameter=TrueToInvisible}" Click="RecordButton_Click">
+        	<Button.Background>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="#FFB0006E" Offset="1"/>
+        			<GradientStop Color="#FFFFBFE7"/>
+        		</LinearGradientBrush>
+        	</Button.Background>
+        </Button>
+    </Grid>
+</UserControl>

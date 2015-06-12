@@ -1,0 +1,183 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="AudioBoo.Views.EditBooMetaDataPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls;assembly=AudioBoo"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+        
+        <!--Pivot Control to contain boo details and boo photo-->
+        <controls:Pivot Name="MainPivot" Title="Boo Details">
+            
+            <controls:PivotItem Margin="0,28,0,0">
+
+                <controls:PivotItem.Header>
+
+                    <customcontrols:PivotHeaderControl Name="DetailsHeader" PageName="Details" />
+
+                </controls:PivotItem.Header>
+
+                <!--ContentPanel - place additional content here-->
+                <Grid x:Name="Form" Margin="0 0 0 0" Grid.Row="1">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="480" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" />
+
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60"/>
+
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
+                
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="320" />
+                    </Grid.RowDefinitions>
+
+
+                    <!--Title-->
+                    <!--<customcontrols:FieldTitleAndError Name="TitleBooTitle" Grid.Row="1" Grid.Column="0" Title="Boo title" />-->
+
+                    <TextBlock x:Name="TextBlockTitle"
+                                Foreground="{StaticResource AudioBooBlue}"
+                                Text="Boo Title"
+                                Grid.Row="1" 
+                                FontSize="20"
+                                Style="{Binding TextStyle}"
+                                Height="30"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top" Margin="15,3,0,0" />
+                    <TextBox x:Name="TextBoxTitle" 
+                         Grid.Row="2" 
+                         VerticalAlignment="Center" 
+                         FontSize="20"  
+                         InputScope="PersonalGivenName" 
+                         MaxLength="32"
+                         Height="70"
+                         Text="{Binding Path=Title, Mode=OneWay}" 
+                         BorderBrush="{StaticResource AudioBooPink}" 
+                                Foreground="{StaticResource AudioBooBlue}"
+                             Background="White" />
+
+
+
+                    <!--category-->
+                    <TextBlock Grid.Row="3" 
+                               HorizontalAlignment="Left" 
+                               VerticalAlignment="Center" 
+                               FontSize="20" 
+                               Padding="20" 
+                               Foreground="{StaticResource AudioBooBlue}"
+                               Visibility="Visible">Select a category</TextBlock>
+                    <customcontrols:CategorySelectorControl 
+                        x:Name="CategorySelector" 
+                        NoSelectionMadeText="Please select a category"
+                        Grid.Row="4" 
+                        Height="Auto" />
+            
+            
+            
+                    <TextBlock x:Name="textBlockDescription"
+                               Foreground="{StaticResource AudioBooBlue}"
+                            Text="Boo Description"
+                            Grid.Row="5" 
+                            FontSize="20"
+                            Style="{Binding TextStyle}"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" Margin="15,3,0,0" />
+
+                    <!--the description textbox-->
+                    <ScrollViewer Name="scrollViewer1" Grid.Row="6"  >
+                        <TextBox x:Name="TextBoxDescription"
+                                BorderBrush="{StaticResource AudioBooBlue}"    
+                                AcceptsReturn="True"
+                                FontSize="20"
+                                Text="{Binding Description, Mode=OneWay, ValidatesOnExceptions=True}"
+                                TextWrapping="Wrap" 
+                                Foreground="{StaticResource AudioBooBlue}"
+                                MaxLength="500"  />
+
+                    </ScrollViewer>
+                    <!--KeyDown="textBoxDescription_KeyDown" 
+                                KeyUp="textBoxDescription_KeyUp"
+                                LostFocus="textBoxDescription_LostFocus" 
+                                GotFocus="textBoxDescription_GotFocus" />-->
+
+
+                </Grid>
+
+            </controls:PivotItem>
+
+
+            <!--The camera pivot-->
+            <controls:PivotItem Margin="0,28,0,0">
+
+                <controls:PivotItem.Header>
+
+                    <customcontrols:PivotHeaderControl x:Name="PhotoHeader" PageName="Photo"/>
+
+                </controls:PivotItem.Header>
+
+                <Canvas Width="480" Grid.Row="1">
+
+                    <!--Boo title-->
+                    <TextBlock Name="TextboxBooTitle" FontSize="20" Text="{Binding Title}" Foreground="{StaticResource AudioBooPink}" Canvas.Left="30" Canvas.Top="10" FontWeight="Bold" Width="440"/>
+
+                    <!--The photo control-->
+                    <customcontrols:PhotoControl x:Name="PhotoControl" Canvas.Left="83" Canvas.Top="77" />
+
+                    <!--The tap instructions-->
+                    <TextBlock x:Name="TextboxInstructionsTap" TextWrapping="Wrap" FontSize="20" Text="Tap box above to take a photo" Foreground="{StaticResource AudioBooPink}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" TextAlignment="Center" Canvas.Left="83" Canvas.Top="377" />
+
+                    <TextBlock Name="TextboxInstructionsOr" TextWrapping="Wrap" FontSize="15" Text="or" Foreground="{StaticResource AudioBooPink}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Canvas.Top="413" Canvas.Left="83" TextAlignment="Center" />
+
+                    <HyperlinkButton Name="HyperlinkSlectFromFolder" Content="Select picture from library" Foreground="{StaticResource AudioBooPink}" Canvas.Left="83" Canvas.Top="439" Width="300" Click="HyperlinkSelectFromFolder_Click"/>
+
+                </Canvas>
+
+            </controls:PivotItem>
+
+
+            <!--The location pivot-->
+            <controls:PivotItem Margin="0,28,0,0">
+
+                <controls:PivotItem.Header>
+
+                    <customcontrols:PivotHeaderControl x:Name="LocationHeader" PageName="Location"/>
+
+                </controls:PivotItem.Header>
+
+                <Canvas Width="480" Grid.Row="1">
+
+                    <!--Boo title-->
+                    <TextBlock Name="TextboxBooTitle2" FontSize="20" Text="{Binding Title}" Foreground="{StaticResource AudioBooPink}" Canvas.Left="30" Canvas.Top="10" FontWeight="Bold" Width="440"/>
+
+                    <!--The location control-->
+                    <customcontrols:LocationControl x:Name="LocationControl" Canvas.Left="83" Canvas.Top="77" />
+
+                </Canvas>
+
+            </controls:PivotItem>
+
+        
+        </controls:Pivot>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

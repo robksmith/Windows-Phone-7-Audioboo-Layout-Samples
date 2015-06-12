@@ -1,0 +1,68 @@
+﻿<local:PhoneApplicationBasePage
+    x:Class="AudioBoo.Views.FeaturedBooPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AudioBoo.Helpers"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels;assembly=AudioBoo"
+    xmlns:delay="clr-namespace:AudioBoo.Helpers;assembly=AudioBoo.Helpers"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls" 
+    xmlns:listcontrols="clr-namespace:AudioBoo.Controls.ListItems" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        
+        <vm:FeaturedBoosViewModel x:Key="ViewModel"/>
+
+        <DataTemplate x:Key="FeaturedBoosTemplate">
+
+            <listcontrols:FeaturedBooItem x:Name="BooItemViewOnPage"></listcontrols:FeaturedBooItem>
+
+        </DataTemplate>
+        
+    </phone:PhoneApplicationPage.Resources>
+    
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <customcontrols:PivotHeaderControl x:Name="PageHeaderControl" PageName="featured" Grid.Row="0" />
+
+        <!--The list of featured boos-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+
+            <toolkit:LongListSelector Name="FeaturedBoosLongList" Grid.Row="1"
+                                          Background="Transparent"
+                                          DataContext="{StaticResource ViewModel}"
+                                          ItemTemplate="{StaticResource FeaturedBoosTemplate}"
+                                          ItemsSource="{Binding BooClips}"
+                                          SelectionChanged="FeaturedBoos_OnSelectionChanged"
+                                          IsFlatList="True">
+
+                <toolkit:LongListSelector.GroupItemsPanel>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel/>
+                    </ItemsPanelTemplate>
+                </toolkit:LongListSelector.GroupItemsPanel>
+
+            </toolkit:LongListSelector>
+
+        </Grid>
+        
+    </Grid>
+
+</local:PhoneApplicationBasePage>

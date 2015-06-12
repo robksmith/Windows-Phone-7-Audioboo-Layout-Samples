@@ -1,0 +1,71 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="AudioBoo.Views.CategorySelectorPage"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls"
+    xmlns:listcontrols="clr-namespace:AudioBoo.Controls.ListItems;assembly=AudioBoo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--xmlns:vm="clr-namespace:AudioBoo.ViewModels"-->
+
+    <phone:PhoneApplicationPage.Resources>
+        <!--<vm:CategoriesViewModel x:Key="ViewModel"/>-->
+
+            <!-- The template for each club -->
+        <DataTemplate x:Key="categoriesItemTemplate" >
+
+            <listcontrols:CategoryItemControl x:Name="CategoryItemControl" Background="Blue" />
+
+        </DataTemplate>
+
+    </phone:PhoneApplicationPage.Resources>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="AudioBoo" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource AudioBooPink}"/>
+            <TextBlock Text="Select Category" FontSize="50" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="{StaticResource AudioBooPink}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+
+            <!--DataContext="{StaticResource ViewModel}"-->
+
+            <!--The itemtemplate property is set in code dynamically-->
+            <toolkit:LongListSelector x:Name="categoriesLongList"
+                                            Background="Transparent"
+                                            ItemTemplate="{StaticResource categoriesItemTemplate}"
+                                            ItemsSource="{Binding CategoryList}"
+                                            SelectionChanged="categoriesLongList_SelectionChanged"
+                                            IsFlatList="True"                                          
+                                           >
+
+                <toolkit:LongListSelector.GroupItemsPanel>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel/>
+                    </ItemsPanelTemplate>
+                </toolkit:LongListSelector.GroupItemsPanel>
+
+            </toolkit:LongListSelector>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

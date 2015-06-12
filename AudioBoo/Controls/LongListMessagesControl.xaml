@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="AudioBoo.Controls.LongListMessagesControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels;assembly=AudioBoo"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:listcontrols="clr-namespace:AudioBoo.Controls.ListItems;assembly=AudioBoo"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"    
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="MessageTemplate">
+
+            <listcontrols:MessageItem x:Name="MessageItemViewOnPage" />
+
+        </DataTemplate>
+        
+    </UserControl.Resources>
+    
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <toolkit:LongListSelector Name="MessagesList" Grid.Row="1"
+                                          ItemTemplate="{StaticResource MessageTemplate}"
+                                          ItemsSource="{Binding MessageList}"
+                                          SelectionChanged="MessagesList_OnSelectionChanged"
+                                          IsFlatList="True"/>
+
+        <!--DataContext="{StaticResource MessagesViewModel}"-->
+
+
+        <!--<ListBox x:Name="MessagesList2" Margin="12,0,12,0" Grid.Row="1"
+						DataContext="{StaticResource MessagesViewModel}"
+						ItemsSource="{Binding MessageList}"
+						ItemTemplate="{StaticResource MessageTemplate}"
+						SelectionChanged="MessagesList_OnSelectionChanged"/>-->
+
+
+    </Grid>
+    
+</UserControl>

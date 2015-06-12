@@ -1,0 +1,46 @@
+﻿<UserControl
+    x:Class="AudioBoo.Controls.UserDetailsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Helpers="clr-namespace:AudioBoo.Helpers;assembly=AudioBoo.Helpers" 
+    mc:Ignorable="d"
+    d:DesignHeight="250" d:DesignWidth="480">
+    
+	<UserControl.FontFamily>
+		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+	</UserControl.FontFamily>
+	<UserControl.FontSize>
+		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
+	</UserControl.FontSize>
+	<UserControl.Foreground>
+		<StaticResource ResourceKey="PhoneForegroundBrush"/>
+	</UserControl.Foreground>
+
+	<Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="150"/>
+		</Grid.RowDefinitions>
+
+        <!--Grid of user image, description -->
+		<Grid x:Name="GridUserDetails">
+
+			<Grid.RowDefinitions>
+				<RowDefinition Height="150"/>
+			</Grid.RowDefinitions>
+
+            <!--User profile image-->
+            <Image x:Name="ImageProfile" Helpers:LowProfileImageLoader.UriSource="{Binding UserData.UserUrls.Image}" Width="100" Height="100" Stretch="UniformToFill" Margin="22,29,358,21"/>
+
+            <!--Username-->
+			<TextBlock Text="{Binding UserData.Username}" Foreground="{StaticResource AudioBooPink}" FontSize="28" FontWeight="Bold" Margin="139,10,10,103"/>
+
+            <TextBlock Text="{Binding UserData.Description}" Margin="139,47,10,21" FontSize="18" Foreground="#FF4683A6" TextWrapping="Wrap"/>
+
+		</Grid>
+
+	</Grid>
+    
+</UserControl>

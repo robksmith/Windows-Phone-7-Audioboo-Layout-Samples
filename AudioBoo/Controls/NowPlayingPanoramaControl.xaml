@@ -1,0 +1,31 @@
+﻿<controls:PanoramaItem 
+    x:Class="AudioBoo.Controls.NowPlayingPanoramaControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls" 
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="600" d:DesignWidth="480">
+
+
+    <controls:PanoramaItem.Resources>
+
+        <vm:MainPageViewModel x:Key="MainPageViewModel"/>
+
+    </controls:PanoramaItem.Resources>
+
+    
+    
+    <!--<controls:PanoramaItem x:Name="NowPlayingItem" Header="{Binding AppStrings.NowPlayingTitle, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource AudioBooPink}" DataContext="{StaticResource MainPageViewModel}">-->
+
+        <customcontrols:NowPlayingControl x:Name="NowPlayingControl" Width="400"/>
+
+    <!--</controls:PanoramaItem>-->
+
+</controls:PanoramaItem>

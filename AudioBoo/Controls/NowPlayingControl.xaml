@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="AudioBoo.Controls.NowPlayingControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="580" d:DesignWidth="480">
+
+    <UserControl.Resources>
+
+        <ControlTemplate x:Key="PhoneProgressBarSliderThumb" TargetType="Thumb">
+            <Rectangle Fill="{TemplateBinding Foreground}" Height="4" IsHitTestVisible="False" Width="4"/>
+        </ControlTemplate>
+
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Canvas x:Name="MediaPlaybackGrid" Background="Transparent">
+
+            <!--The now playing image-->
+            <Image x:Name="ImageBooNowPlaying" Width="319" Height="298" Stretch="UniformToFill" Canvas.Left="30" Tap="ImageBooNowPlaying_Tap" />
+
+            <TextBlock x:Name="ArtistMarker" Text="artist" Foreground="{StaticResource AudioBooPink}" FontSize="22" FontWeight="Bold" Width="319" Canvas.Top="313" Canvas.Left="30" Height="37"/>
+            <TextBlock x:Name="TitleMarker" Text="title" Foreground="{StaticResource AudioBooBlue}" FontSize="22" Width="319" Canvas.Top="355" Canvas.Left="30" Height="67" HorizontalAlignment="Left" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+
+            <!--The current play time marker eg 00:07 / 00:12-->
+            <TextBlock x:Name="PlayTimeMarker" Text="play time marker" Foreground="{StaticResource AudioBooPink}" TextAlignment="Right" Width="218" Canvas.Top="271" Canvas.Left="-9"/>
+            <TextBlock x:Name="EndTimeMarker" Text="end time marker" Foreground="{StaticResource AudioBooPink}" Canvas.Left="228" Canvas.Top="271" Width="230"/>
+
+        </Canvas>
+
+    </Grid>
+
+
+</UserControl>

@@ -1,0 +1,176 @@
+﻿<local:PhoneApplicationBasePage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:AudioBoo.Helpers"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:delay="clr-namespace:AudioBoo.Helpers;assembly=AudioBoo"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls" 
+    xmlns:converters="clr-namespace:AudioBoo.Helpers"
+    x:Class="AudioBoo.Views.MainPage"
+    
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+	<phone:PhoneApplicationPage.Resources>
+        <converters:BoolToVisibilityConverter x:Key="trueToVisibleConverter"  />
+        
+        <vm:MainPageViewModel x:Key="MainPageViewModel"/>
+        
+        <DataTemplate x:Key="BrowseTemplate">
+            <Grid Margin="12,0,0,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Column="0" Grid.Row="0" Source="{Binding BrowseImage}" Width="51" Height="44"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding BrowseTitle}" FontSize="40" Foreground="#FF4F89A4" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="FeaturedBooTemplate">
+            <StackPanel Margin="20">
+                <Image Grid.Column="0" delay:LowProfileImageLoader.UriSource="{Binding BooTileUri}" Width="150" Height="150" Margin="0" Stretch="UniformToFill"/>
+                <TextBlock x:Name="UserNameTextBlock" Text="{Binding Username}" Foreground="{StaticResource AudioBooPink}" MinWidth="100" MaxWidth="150"/>
+                <TextBlock x:Name="TitleTextBlock" Text="{Binding Title}" Foreground="{StaticResource AudioBooBlue}" TextTrimming="WordEllipsis" MaxWidth="150"/>
+            </StackPanel>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+	<phone:PhoneApplicationPage.FontFamily>
+		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+	</phone:PhoneApplicationPage.FontFamily>
+	<phone:PhoneApplicationPage.FontSize>
+		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
+	</phone:PhoneApplicationPage.FontSize>
+	<phone:PhoneApplicationPage.Foreground>
+		<StaticResource ResourceKey="PhoneForegroundBrush"/>
+	</phone:PhoneApplicationPage.Foreground>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+       <Grid x:Name="HeaderPanel" Grid.Row="0">
+           
+           <Image Source="..\Resources\Images\ab_logo.png" Width="226" Height="42" Margin="29,26,225,22"></Image>
+
+            <Button Name="ButtonContacts" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="40" Margin="294,26,0,0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="..\Resources\Images\icn_contacts.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Name="ButtonMessages" Tap="ButtonMessages_Tap" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="358,26,0,0" Width="40" Height="40">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="..\Resources\Images\icn_messages.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+           
+            <Button Name="ButtonProfile" Tap="ButtonProfile_Tap" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="422,27,0,0" Width="40" Height="40" >
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="..\Resources\Images\icn_profile.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>   
+           
+        </Grid>
+        
+        
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            
+            <controls:Panorama x:Name="AppPanorama">
+
+                <!--Featured-->
+                <controls:PanoramaItem x:Name="FeaturedItem" Header="{Binding AppStrings.FeaturedTitle, Source={StaticResource LocalizedStrings}}" Width="650" Orientation="Horizontal" Foreground="{StaticResource AudioBooPink}">
+                    <controls:PanoramaItem.HeaderTemplate>
+                        <DataTemplate>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="featured" Grid.Column="0"/>
+                                <Button Content="..." Margin="35,20,35,4" Grid.Column="1" Style="{StaticResource RoundButton}" Foreground="#FF4683A6" BorderBrush="#FF4683A6" Width="72" Height="72" Padding="10,5" Click="MoreFeatured_Click"/>
+                            </Grid>
+                        </DataTemplate>
+                    </controls:PanoramaItem.HeaderTemplate>
+                    <ListBox Name="FeaturedBoosList" Grid.Row="1"
+                         DataContext="{StaticResource MainPageViewModel}"
+                         ItemTemplate="{StaticResource FeaturedBooTemplate}"
+                         ItemsSource="{Binding FeaturedBoos}"
+                         SelectionChanged="FeaturedList_OnSelectionChanged">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <toolkit:WrapPanel Orientation="Horizontal"></toolkit:WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </controls:PanoramaItem>
+
+                <!--Boos-->
+                <controls:PanoramaItem x:Name="BoosItem" Header="{Binding AppStrings.BoosTitle, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource AudioBooPink}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <TextBox x:Name="SearchBox" Text="search" Background="#FFADBABD" Width="350" BorderBrush="#FFADBABD" GotFocus="Search_OnGotFocus" KeyDown="Search_KeyDown"/>
+                            <Button x:Name="SearchButton" Height="44" Width="44" Click="SearchButton_Click">
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Image Source="../Resources/Images/search_icon.png"/>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
+                        <ListBox Name="BrowseList" Grid.Row="1" Margin="0,20"
+                                 DataContext="{StaticResource MainPageViewModel}"
+                                 ItemTemplate="{StaticResource BrowseTemplate}"
+                                 ItemsSource="{Binding BrowseItems}"
+                                 SelectionChanged="BrowseList_OnSelectionChanged"/>
+                        
+                    </Grid>
+                </controls:PanoramaItem>
+
+                <!--Record-->
+                <controls:PanoramaItem x:Name="RecordItem" Header="{Binding AppStrings.RecordTitle, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource AudioBooPink}" Orientation="Horizontal">
+                    <Grid>
+                        <!--<customcontrols:RecordBooControl x:Name="RecordControl" Width="400"/>-->
+                    </Grid>
+                </controls:PanoramaItem>
+
+                <!--Now playing-->
+                <controls:PanoramaItem x:Name="NowPlayingItem" Header="{Binding AppStrings.NowPlayingTitle, Source={StaticResource LocalizedStrings}}" Foreground="{StaticResource AudioBooPink}" DataContext="{StaticResource MainPageViewModel}">
+
+                    <customcontrols:NowPlayingControl x:Name="NowPlayingControl" Width="400"/>
+
+                </controls:PanoramaItem>
+                
+            </controls:Panorama>
+            
+        </Grid>
+        
+	</Grid>
+
+</local:PhoneApplicationBasePage>

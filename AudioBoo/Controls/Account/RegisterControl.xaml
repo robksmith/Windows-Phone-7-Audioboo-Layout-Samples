@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="AudioBoo.Controls.RegisterControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls;assembly=AudioBoo"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource StandardTextColour}"
+    d:DesignHeight="1200" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Height="1200" Margin="0 0 0 0">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="480" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60"/>
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="20" />
+
+            <RowDefinition Height="0" />
+            <RowDefinition Height="40" />
+
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <!--Username-->
+        <customcontrols:FieldTitleAndError Name="TitleUsername" Grid.Row="0" Grid.Column="0" Title="choose a username" />
+        <TextBox x:Name="TextBoxUsername" 
+                 Foreground="Gray" 
+                 Grid.Row="1" 
+                 VerticalAlignment="Center" 
+                 FontSize="20"  
+                 GotFocus="TextBoxUsername_GotFocus" 
+                 LostFocus="TextBoxUsername_LostFocus" 
+                 KeyUp="TextBoxUsername_KeyUp" 
+                 InputScope="EmailSmtpAddress" 
+                 MaxLength="32"
+                 Height="70"
+                 Background="White" 
+                 BorderBrush="{StaticResource TextBoxBorderBrush}" />
+        
+        <!--Email-->
+        <customcontrols:FieldTitleAndError Name="TitleEmail" Grid.Row="2" Grid.Column="0" Title="email" />
+        <TextBox x:Name="TextBoxEmail" 
+                 Foreground="Gray" 
+                 Grid.Row="3" 
+                 VerticalAlignment="Center" 
+                 FontSize="20"  
+                 GotFocus="TextBoxEmail_GotFocus" 
+                 LostFocus="TextBoxEmail_LostFocus" 
+                 KeyUp="TextBoxEmail_KeyUp" 
+                 InputScope="EmailSmtpAddress" 
+                 MaxLength="32"
+                 Height="70"
+                 Background="White" 
+                 BorderBrush="{StaticResource TextBoxBorderBrush}" />
+
+        
+        
+        <customcontrols:FieldTitleAndError Name="TitlePassword" Grid.Row="4" Grid.Column="0" Title="choose a password" />
+        <TextBox 
+            x:Name="TextBoxPasswordWatermark" 
+            Grid.Row="5" 
+            Grid.Column="0"  
+            IsHitTestVisible="False" 
+            FontSize="20" 
+            Height="70" 
+            VerticalAlignment="Center" 
+            Background="#ffffffff" BorderBrush="{StaticResource TextBoxBorderBrush}"
+            />
+        <PasswordBox 
+            x:Name="PasswordBoxUserPassword" 
+            Grid.Row="5" 
+            Grid.Column="1"  
+            GotFocus="PasswordBoxUserPassword_GotFocus" 
+            LostFocus="PasswordBoxUserPassword_LostFocus" 
+            KeyUp="PasswordBoxUserPassword_KeyUp"
+            Opacity="0" 
+            FontSize="20" 
+            PasswordChar="*" 
+            MaxLength="32" 
+            Height="70" 
+            VerticalAlignment="Center" BorderBrush="{StaticResource TextBoxBorderBrush}" Background="White"/>
+
+
+
+        <customcontrols:FieldTitleAndError Name="TitlePasswordConfirm" Grid.Row="6" Grid.Column="0" Title="confirm password" />
+        <TextBox 
+            x:Name="TextBoxPasswordConfirmWatermark" 
+            Grid.Row="7" 
+            Grid.Column="0"  
+            IsHitTestVisible="False" 
+            FontSize="20" 
+            Height="70" 
+            VerticalAlignment="Center" 
+            Background="#ffffffff" BorderBrush="{StaticResource TextBoxBorderBrush}" 
+            />
+        <PasswordBox 
+            x:Name="PasswordBoxUserPasswordConfirm" 
+            Grid.Row="7" 
+            Grid.Column="1"  
+            GotFocus="PasswordBoxUserPasswordConfirm_GotFocus" 
+            LostFocus="PasswordBoxUserPasswordConfirm_LostFocus" 
+            KeyUp="PasswordBoxUserPasswordConfirm_KeyUp"
+            Opacity="0" 
+            FontSize="20" 
+            PasswordChar="*" 
+            MaxLength="32" 
+            Height="70" 
+            VerticalAlignment="Center" BorderBrush="{StaticResource TextBoxBorderBrush}" Background="White"/>
+
+    
+        <!--accept t & c-->
+        <customcontrols:FieldTitleAndError Name="TitleAcceptTC" Grid.Row="9" Grid.Column="0" Title="accept the terms and conditions" HorizontalAlignment="Center" />
+        <CheckBox x:Name="CheckBoxTC" 
+                 Grid.Row="10" 
+                 VerticalAlignment="Center" 
+                 FontSize="20" 
+                 BorderBrush="{StaticResource TextBoxBorderBrush}"
+                 Height="70" Content="{Binding LocalizedResources.TermsAccept, Source={StaticResource LocalizedStrings}}" Background="White" HorizontalAlignment="Center"/>
+
+        <HyperlinkButton Name="HyperlinkTermsOfService" Grid.Row="11" Content="Terms of service" HorizontalAlignment="Center" ></HyperlinkButton>
+
+    </Grid>
+
+</UserControl>

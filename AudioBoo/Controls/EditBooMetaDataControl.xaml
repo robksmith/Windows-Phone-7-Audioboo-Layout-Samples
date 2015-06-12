@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="AudioBoo.Controls.EditBooMetaDataControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Margin="0 0 0 100">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="480" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60"/>
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="260" />
+
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+
+        <!--Title-->
+        <!--<customcontrols:FieldTitleAndError Name="TitleFirstName" Grid.Row="1" Grid.Column="0" Title="first name" />-->
+        <TextBox x:Name="TextBoxFirstName" 
+                 Grid.Row="2" 
+                 VerticalAlignment="Center" 
+                 FontSize="20"  
+                 InputScope="PersonalGivenName" 
+                 MaxLength="32"
+                 Height="70"
+                 Text="{Binding Path=Title, Mode=OneWay}" 
+                 BorderBrush="{StaticResource AudioBooPink}" Background="White" />
+
+
+        
+        <TextBlock x:Name="textBlockDescription"
+                    Text="description"
+                    Grid.Row="3" 
+                    FontSize="20"
+                    Style="{Binding TextStyle}"
+                    Height="30"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Margin="15,3,0,0" d:LayoutOverrides="GridBox" />
+
+        <!--the description textbox-->
+        <ScrollViewer Name="scrollViewer1" Grid.Row="4"  >
+            <TextBox x:Name="textBoxDescription"
+                        BorderBrush="{StaticResource AudioBooPink}"    
+                        InputScope="Search"
+                        AcceptsReturn="True"
+                        Grid.Row="4"
+                        FontSize="20"
+                        Text="{Binding Report.Description, Mode=TwoWay, ValidatesOnExceptions=True}"
+                        TextWrapping="Wrap" 
+                        MaxLength="500"  />
+
+        </ScrollViewer>
+                <!--KeyDown="textBoxDescription_KeyDown" 
+                        KeyUp="textBoxDescription_KeyUp"
+                        LostFocus="textBoxDescription_LostFocus" 
+                        GotFocus="textBoxDescription_GotFocus" />-->
+
+                <!--category-->
+        <!--<TextBlock Grid.Row="16" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Padding="20" Visibility="Visible">second favourite team</TextBlock>
+        <customcontrols:FavouriteTeamSelectorControl 
+            x:Name="FavouriteTeam2" 
+            NoSelectionMadeText="Please select a second favourite team"
+            Grid.Row="17" 
+            Height="Auto" />-->
+        
+        
+        <Button Content="button" Grid.Row="6" Click="Button_Click"></Button>
+
+    </Grid>
+</UserControl>

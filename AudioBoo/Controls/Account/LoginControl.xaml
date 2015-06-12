@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="AudioBoo.Controls.LoginControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource StandardTextColour}"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls;assembly=AudioBoo"
+    d:DesignHeight="600" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="480" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1" />
+
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="40" />
+            <RowDefinition Height="60" />
+            
+            <RowDefinition Height="40" />
+            <RowDefinition Height="60" />
+
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <!--Description-->
+        <TextBlock x:Name="TextBlockDescription" Grid.Row="1" TextWrapping="Wrap" FontSize="20" Padding="10" Text="Please enter your username and password"/>
+
+
+        <!--Username-->
+        <customcontrols:FieldTitleAndError Name="TitleUsername" Grid.Row="2" Grid.Column="0" Title="username" />
+        <TextBox  
+                 BorderBrush="{StaticResource AudioBooPink}"
+                 x:Name="TextBoxUsername" 
+                 Foreground="#FFBFBFBF" 
+                 Grid.Row="3" 
+                 Grid.Column="0" 
+                 VerticalAlignment="Center" 
+                 FontSize="20"  
+                 GotFocus="TextBoxEmail_GotFocus" 
+                 LostFocus="TextBoxEmail_LostFocus" 
+                 KeyUp="TextBoxEmail_KeyUp" 
+                 InputScope="EmailSmtpAddress" 
+                 MaxLength="48"
+				 Text="email"
+                 Height="70" Background="White" BorderThickness="3"/>
+
+        <!--Password-->
+        <customcontrols:FieldTitleAndError Name="TitlePassword" Grid.Row="4" Grid.Column="0" Title="password" />
+        <TextBox 
+            x:Name="TextBoxPasswordWatermark" 
+            Grid.Row="5" 
+            Grid.Column="0"  
+            IsHitTestVisible="False" 
+            FontSize="20" 
+            Height="70" 
+            VerticalAlignment="Center" 
+            Background="#ffffffff" 
+            BorderBrush="{StaticResource AudioBooPink}"
+            />
+        <PasswordBox 
+            x:Name="PasswordBoxUserPassword" 
+            Grid.Row="5" 
+            Grid.Column="1"  
+            GotFocus="PasswordBoxUserPassword_GotFocus" 
+            LostFocus="PasswordBoxUserPassword_LostFocus" 
+            KeyUp="PasswordBoxUserPassword_KeyUp"
+            Opacity="0" 
+            FontSize="20" 
+            PasswordChar="*" 
+            MaxLength="32" 
+            Height="70" 
+            VerticalAlignment="Center" 
+            BorderBrush="{StaticResource AudioBooPink}"
+            Background="White"/>
+
+
+    </Grid>
+
+</UserControl>

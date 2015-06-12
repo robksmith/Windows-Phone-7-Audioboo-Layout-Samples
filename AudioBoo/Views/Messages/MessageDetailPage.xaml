@@ -1,0 +1,73 @@
+﻿<local:PhoneApplicationBasePage
+    x:Class="AudioBoo.Views.MessageDetailPage"
+    xmlns:local="clr-namespace:AudioBoo.Helpers"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels;assembly=AudioBoo" 
+    xmlns:delay="clr-namespace:AudioBoo.Helpers;assembly=AudioBoo" 
+    xmlns:controls="clr-namespace:AudioBoo.Controls;assembly=AudioBoo"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <local:PhoneApplicationBasePage.Resources>
+            <vm:MessageDetailViewModel x:Key="ViewModel"/>
+    </local:PhoneApplicationBasePage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}" DataContext="{Binding Source={StaticResource ViewModel}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0">
+            
+        	<Grid x:Name="ContentPanel">
+                
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="{Binding ImageHeight}" MaxHeight="50"/>
+        			<RowDefinition Height="180"/>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="*"/>
+        	    </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" x:Name="BooImage" delay:LowProfileImageLoader.UriSource="{Binding ImageUrl}" Stretch="UniformToFill"/>
+
+                <!--<TextBlock Text="Binding Username}" Foreground="{StaticResource AudioBooPink}"/>-->
+
+                <controls:MediaPlayerControl x:Name="MediaPlayer" Grid.Row="1" Width="480" Height="180"/>
+            
+        		<Grid Grid.Row="2" Margin="10,0">
+                    
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="110"/>
+        				<ColumnDefinition Width="*"/>
+        			</Grid.ColumnDefinitions>
+                    
+        			<Grid.RowDefinitions>
+        				<RowDefinition Height="Auto" MinHeight="110"/>
+        			</Grid.RowDefinitions>
+                    
+        			<Image Grid.Column="0" DataContext="{Binding BooData}" delay:LowProfileImageLoader.UriSource="{Binding ProfileImageUri}" delay:LowProfileImageLoader.DefaultUri="..\Resources\Images\ABAnonymousBoo.jpg"  Width="100" Height="100"/>
+                    
+        			<StackPanel Grid.Column="1" Orientation="Vertical">
+        				<TextBlock Text="{Binding Username}" Foreground="{StaticResource AudioBooPink}"/>
+        				<TextBlock Text="{Binding Title}" Foreground="Black" FontSize="26.667" TextWrapping="Wrap"/>
+        				<TextBlock Text="{Binding LocationDescription}" FontSize="13.333" Foreground="#FF4683A6"/>
+        			</StackPanel>
+                    
+        		</Grid>
+
+        		<TextBlock Grid.Row="3" Text="{Binding Description}" TextWrapping="Wrap" Foreground="Black" Padding="10,0" Margin="0, 20"/>
+                
+        	</Grid>
+            
+        </ScrollViewer>
+    </Grid>
+</local:PhoneApplicationBasePage>

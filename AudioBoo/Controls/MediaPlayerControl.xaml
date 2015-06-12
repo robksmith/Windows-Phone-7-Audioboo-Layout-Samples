@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="AudioBoo.Controls.MediaPlayerControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}" 
+    d:DesignWidth="480" Height="180">
+
+    <UserControl.Resources>
+
+        <vm:MediaPlayerViewModel x:Key="ViewModel"/>
+
+        <ControlTemplate x:Key="PhoneProgressBarSliderThumb" TargetType="Thumb">
+            <Rectangle Fill="{TemplateBinding Foreground}" Height="4" IsHitTestVisible="False" Width="4"/>
+        </ControlTemplate>
+
+    </UserControl.Resources>
+
+    <Canvas x:Name="MediaPlaybackGrid" Background="Transparent" DataContext="{Binding Source={StaticResource ViewModel}}" Height="180">
+
+        <ProgressBar Name="ProgressBar" Width="480" Height="34" IsIndeterminate="True" Canvas.Top="1"/>
+
+        <!--<ProgressBar x:Name="PositionIndicator" Value="{Binding Progress}" Background="#FF317597" Foreground="#FFC500FF" Margin="79,26,0,31" Style="{StaticResource ProgressBarStyle1}" />-->
+        <Slider x:Name="PositionIndicator" Minimum="0" Background="#FF317597" Foreground="{StaticResource AudioBooPink}" Width="345" Canvas.Left="120" Canvas.Top="55" Height="101" BorderThickness="0" />
+
+        <!--The current play time marker eg 00:07 / 00:12-->
+        <TextBlock x:Name="PlayTimeMarker" Text="play time marker" Foreground="{StaticResource AudioBooPink}" Canvas.Left="131" TextAlignment="Right" Width="334" Canvas.Top="40"/>
+        <TextBlock x:Name="EndTimeMarker" Text="end time marker" Foreground="{StaticResource AudioBooPink}" Canvas.Left="131" Canvas.Top="111" TextAlignment="Right" Width="334"/>
+
+        <Button x:Name="PlayButton" Height="47" Width="47" Click="PlayButtonClick" Canvas.Left="32" Canvas.Top="69">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="..\Resources\Images\icn_play.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Grid Name="GridLoading" Background="#BD000000" Height="180" Width="480">
+            <TextBlock TextWrapping="NoWrap" Text="loading" FontSize="45" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+    </Canvas>
+
+</UserControl>

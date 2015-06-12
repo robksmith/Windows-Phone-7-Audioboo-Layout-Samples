@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{02496D20-EA7E-4EB5-A449-B1D9533DF253}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AudioBoo</RootNamespace>
+    <AssemblyName>AudioBoo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>AudioBoo.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>AudioBoo.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZLib.Phone">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ICSharpCode.SharpZLib.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Controls">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Filtering">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Filtering.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Bmp">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Bmp.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Gif">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Png">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.IO.Png.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Utils">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\ImageTools.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\sl4-windowsphone71\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Xna.Framework" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AudioBoo.Web\libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PhoneCodeContractsAssemblies">
+      <HintPath>..\packages\ImageTools.0.3.1\lib\sl3-wp\PhoneCodeContractsAssemblies.dll</HintPath>
+    </Reference>
+    <Reference Include="system.data.linq" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="mscorlib.extensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Account\ProfilePhotoControl.xaml.cs">
+      <DependentUpon>ProfilePhotoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Account\ProfileControl.xaml.cs">
+      <DependentUpon>ProfileControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Account\RegisterControl.xaml.cs">
+      <DependentUpon>RegisterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Account\AskRegisterOrLoginControl.xaml.cs">
+      <DependentUpon>AskRegisterOrLoginControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Account\ProfileUserDetailsControl.xaml.cs">
+      <DependentUpon>ProfileUserDetailsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CategorySelectorControl.xaml.cs">
+      <DependentUpon>CategorySelectorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListItems\FeaturedBooItem.xaml.cs">
+      <DependentUpon>FeaturedBooItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LongListFavBoosControl.xaml.cs">
+      <DependentUpon>LongListFavBoosControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DraftBooMediaPlayerControl.xaml.cs">
+      <DependentUpon>DraftBooMediaPlayerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DraftBooMediaRecorderControl.xaml.cs">
+      <DependentUpon>DraftBooMediaRecorderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FieldTitleAndError.xaml.cs">
+      <DependentUpon>FieldTitleAndError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JumpKeyControl.xaml.cs">
+      <DependentUpon>JumpKeyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JumpKeyHeaderControl.xaml.cs">
+      <DependentUpon>JumpKeyHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListItems\CategoryItemControl.xaml.cs">
+      <DependentUpon>CategoryItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListItems\BooItem.xaml.cs">
+      <DependentUpon>BooItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ListItems\MessageItem.xaml.cs">
+      <DependentUpon>MessageItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LocationControl.xaml.cs">
+      <DependentUpon>LocationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Account\LoginControl.xaml.cs">
+      <DependentUpon>LoginControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LongListBoosControl.xaml.cs">
+      <DependentUpon>LongListBoosControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LongListMessagesControl.xaml.cs">
+      <DependentUpon>LongListMessagesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NowPlayingControl.xaml.cs">
+      <DependentUpon>NowPlayingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NowPlayingPanoramaControl.xaml.cs">
+      <DependentUpon>NowPlayingPanoramaControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageHeaders\PivotHeaderControl.xaml.cs">
+      <DependentUpon>PivotHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PageHeaders\PageSingleHeaderControl.xaml.cs">
+      <DependentUpon>PageSingleHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PhotoControl.xaml.cs">
+      <DependentUpon>PhotoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PopupMessageControl.xaml.cs">
+      <DependentUpon>PopupMessageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RecordBooLargeControl.xaml.cs">
+      <DependentUpon>RecordBooLargeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RecordBooControl.xaml.cs">
+      <DependentUpon>RecordBooControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WaveCircleControl.xaml.cs">
+      <DependentUpon>WaveCircleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WaveControl.xaml.cs">
+      <DependentUpon>WaveControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\LowProfileImageLoader.cs" />
+    <Compile Include="Helpers\NavigationHelper.cs" />
+    <Compile Include="Helpers\PhoneApplicationBasePage.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Strings\AppStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Strings\LocalizedStrings.cs" />
+    <Compile Include="Controls\UserDetailsControl.xaml.cs">
+      <DependentUpon>UserDetailsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BooDetailPage.xaml.cs">
+      <DependentUpon>BooDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BrowsePage.xaml.cs">
+      <DependentUpon>BrowsePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BrowserPage.xaml.cs">
+      <DependentUpon>BrowserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContactsPage.xaml.cs">
+      <DependentUpon>ContactsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Messages\MessageDetailPage.xaml.cs">
+      <DependentUpon>MessageDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditDraftBoos\CategorySelectorPage.xaml.cs">
+      <DependentUpon>CategorySelectorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChannelBoosPage.xaml.cs">
+      <DependentUpon>ChannelBoosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DownloadsPage.xaml.cs">
+      <DependentUpon>DownloadsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditDraftBoos\EditBooMetaDataPage.xaml.cs">
+      <DependentUpon>EditBooMetaDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FeaturedBooPage.xaml.cs">
+      <DependentUpon>FeaturedBooPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LandingPage.xaml.cs">
+      <DependentUpon>LandingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\MediaPlayerControl.xaml.cs">
+      <DependentUpon>MediaPlayerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryBoosPage.xaml.cs">
+      <DependentUpon>CategoryBoosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Messages\MessagesPage.xaml.cs">
+      <DependentUpon>MessagesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mockups\MockupRecordBooPage.xaml.cs">
+      <DependentUpon>MockupRecordBooPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mockups\MockupSliderPage.xaml.cs">
+      <DependentUpon>MockupSliderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyBoosPage.xaml.cs">
+      <DependentUpon>MyBoosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditDraftBoos\RecordBooPage.xaml.cs">
+      <DependentUpon>RecordBooPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mockups\MockupDraftBoos.xaml.cs">
+      <DependentUpon>MockupDraftBoos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\UserListOfBoosPage.xaml.cs">
+      <DependentUpon>UserListOfBoosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Controls\Account\ProfilePhotoControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Account\ProfileControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Account\RegisterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Account\AskRegisterOrLoginControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Account\ProfileUserDetailsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CategorySelectorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListItems\FeaturedBooItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\LongListFavBoosControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DraftBooMediaPlayerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DraftBooMediaRecorderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FieldTitleAndError.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\JumpKeyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\JumpKeyHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListItems\CategoryItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ListItems\BooItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ListItems\MessageItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LocationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Account\LoginControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\LongListBoosControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LongListMessagesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NowPlayingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NowPlayingPanoramaControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageHeaders\PivotHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PageHeaders\PageSingleHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PhotoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PopupMessageControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RecordBooLargeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RecordBooControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WaveCircleControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WaveControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\MediaPlayerRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Resources\ProgressBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UserDetailsControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Account\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Account\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BooDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BrowsePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BrowserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContactsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Messages\MessageDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EditDraftBoos\CategorySelectorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChannelBoosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DownloadsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditDraftBoos\EditBooMetaDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FeaturedBooPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LandingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Account\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MediaPlayerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CategoryBoosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Messages\MessagesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mockups\MockupRecordBooPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mockups\MockupSliderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyBoosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditDraftBoos\RecordBooPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Account\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mockups\MockupDraftBoos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\UserListOfBoosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\UserProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Audio\Ring01.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Audio\Ring02.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Audio\Ring03.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\ABAnonymousBoo.jpg" />
+    <Content Include="Resources\Images\AppBar\appbar.add.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.back.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.basecircle.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.cancel.rest.png" />
+    <Content Include="Resources\Images\AppBar\back.png" />
+    <Content Include="Resources\Images\AppBar\check.png" />
+    <Content Include="Resources\Images\AppBar\appbar.close.rest.png" />
+    <Content Include="Resources\Images\AppBar\delete.png" />
+    <Content Include="Resources\Images\AppBar\appbar.download.rest.png" />
+    <Content Include="Resources\Images\AppBar\edit.png" />
+    <Content Include="Resources\Images\AppBar\appbar.favs.addto.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.favs.rest.png" />
+    <Content Include="Resources\Images\AppBar\camera.png" />
+    <Content Include="Resources\Images\AppBar\appbar.feature.email.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.feature.search.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.feature.settings.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.feature.video.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.folder.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.minus.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.new.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.next.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.overflowdots.png" />
+    <Content Include="Resources\Images\AppBar\appbar.questionmark.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.refresh.rest.png" />
+    <Content Include="Resources\Images\AppBar\save.png" />
+    <Content Include="Resources\Images\AppBar\appbar.share.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.stop.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.sync.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.transport.ff.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.transport.pause.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.transport.play.rest.png" />
+    <Content Include="Resources\Images\AppBar\appbar.transport.rew.rest.png" />
+    <Content Include="Resources\Images\AppBar\upload.png" />
+    <Content Include="Resources\Images\AppBar\record.png" />
+    <Content Include="Resources\Images\background.png" />
+    <Content Include="Resources\Images\booBoard.png" />
+    <Content Include="Resources\Images\Categories\icn_football.png" />
+    <Content Include="Resources\Images\Categories\icn_business.png" />
+    <Content Include="Resources\Images\download.png" />
+    <Content Include="Resources\Images\favourite.png" />
+    <Content Include="Resources\Images\icn_browse.png" />
+    <Content Include="Resources\Images\icn_contacts.png" />
+    <Content Include="Resources\Images\icn_download.png" />
+    <Content Include="Resources\Images\icn_messages.png" />
+    <Content Include="Resources\Images\icn_myboos.png" />
+    <Content Include="Resources\Images\icn_pause.png" />
+    <Content Include="Resources\Images\icn_play.png" />
+    <Content Include="Resources\Images\icn_profile.png" />
+    <Content Include="Resources\Images\Missing\BooImage.png" />
+    <Content Include="Resources\Images\Missing\ProfileImage.png" />
+    <Content Include="Resources\Images\Photo\NoPhoto.png" />
+    <Content Include="Resources\Images\search_icon.png" />
+    <Content Include="Resources\Images\sharing.png" />
+    <Content Include="Resources\Images\ab_logo.png" />
+    <Content Include="Resources\Images\squareLogo.png" />
+    <Content Include="Resources\Images\TrackIcons\Episode29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\TrackIcons\Ring01.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\TrackIcons\Ring02.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\TrackIcons\Ring03.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\LiveTile\LargeTileIcon.png" />
+    <Content Include="Resources\LiveTile\SmallAppIcon.png" />
+    <Content Include="SplashScreenImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings\AppStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppStrings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

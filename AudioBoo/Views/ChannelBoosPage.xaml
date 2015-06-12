@@ -1,0 +1,57 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:customcontrols="clr-namespace:AudioBoo.Controls;assembly=AudioBoo" 
+    xmlns:vm="clr-namespace:AudioBoo.ViewModels"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    x:Class="AudioBoo.Views.ChannelBoosPage"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <vm:ChannelBoosViewModel x:Key="ViewModel"/>
+        </phone:PhoneApplicationPage.Resources>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="{StaticResource MainBackground}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+        <!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" DataContext="{StaticResource ViewModel}" Source="{Binding Channel.BannerImage}"/>
+			<controls:Pivot Grid.Row="1" Style="{StaticResource PivotStyle}">
+                <controls:PivotItem DataContext="{StaticResource ViewModel}" Header="{Binding Channel.Title}">
+                    <toolkit:LongListSelector Name="ChannelBoos" Grid.Row="1"
+                                          DataContext="{StaticResource ViewModel}"
+                                          ItemTemplate="{StaticResource BooClipTemplate}"
+                                          ItemsSource="{Binding BooClips}"
+                                          SelectionChanged="ChannelBoos_OnSelectionChanged"
+                                          IsFlatList="True"/>
+                </controls:PivotItem>
+                <controls:PivotItem Header="about">
+                    <TextBlock DataContext="{StaticResource ViewModel}" Margin="12,0,0,0" Text="{Binding Channel.Description}" Foreground="Black" TextWrapping="Wrap"/>
+                </controls:PivotItem>
+                <controls:PivotItem Header="record">
+                    <customcontrols:WaveControl Margin="0,-149,0,0"></customcontrols:WaveControl>
+                </controls:PivotItem>
+			</controls:Pivot>
+
+		</Grid>
+	</Grid>
+
+</phone:PhoneApplicationPage>
