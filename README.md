@@ -5,10 +5,11 @@ Whilst writing Audioboo, the company I was writing it for went bust when the pro
 
 The **Controls** and **Views** directory are where the layouts are found
 
-<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 1.png" width="200">
-<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 2.png" width="200">
+<img src="https://s3-eu-west-1.amazonaws.com/zengo.com.drop/Github/Audioboo/audioboo+-+askregisterorlogin.png" width="200">
+<img src="https://s3-eu-west-1.amazonaws.com/zengo.com.drop/Github/Audioboo/audioboo+-+login.png" width="200">
 
-<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 3.png" width="200">
-<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 4.png" width="200">
+<img src="https://s3-eu-west-1.amazonaws.com/zengo.com.drop/Github/Audioboo/audioboo+-+logincontrol.png" width="200">
+<img src="https://s3-eu-west-1.amazonaws.com/zengo.com.drop/Github/Audioboo/audioboo+-+profile.png" width="200">
 
-<img src="https://storagezengocdn.blob.core.windows.net/github/audioboo 5.png" width="200">
+<img src="https://s3-eu-west-1.amazonaws.com/zengo.com.drop/Github/Audioboo/audioboo+-+profilecontrol.png" width="200">
+<img src="https://s3-eu-west-1.amazonaws.com/zengo.com.drop/Github/Audioboo/audioboo+-+register.png" width="200">
